@@ -26,6 +26,14 @@ if(DEFINED TARGET_BOARD)
           "-mfloat-abi=hard"
           "-mfpu=neon-vfpv4"
           )
+  elseif(${TARGET_BOARD} STREQUAL "rpi3")
+    # rpi2 specific
+    set(FLAGS_COMMON
+          ${FLAGS_COMMON}
+          "-mcpu=cortex-a7"
+          "-mfloat-abi=hard"
+          "-mfpu=neon-vfpv4"
+          )
   else()
     message(FATAL_ERROR "TARGET_BOARD=`${TARGET_BOARD}` is unknown to make")
   endif()
